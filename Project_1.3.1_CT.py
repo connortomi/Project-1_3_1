@@ -1,18 +1,21 @@
+#import turtle, sound, and tkinter libraries
 import turtle as t 
 import tkinter as tk
 from playsound import playsound
 
+#variables
+width = 288
+height = 512
 
-counter =  t.Turtle()
+#create window and turtles
+wn = t.Screen()
+wn.screensize(width, height)
+wn.setup(width, height)
+wn.bgpic("pokebackground.gif")
+wn.addshape("pikachu.gif")
+pokeball = t.Turtle()
+pikachu = t.Turtle()
 
-def countdown():
-  global timer, timer_up
-  counter.clear()
-  if timer <= 0:
-    counter.write("Time's Up", font=font_setup)
-    timer_up = True
-    manage_leaderboard()
-  else:
-    counter.write("Timer: " + str(timer), font=font_setup)
-    timer -= 1
-    counter.getscreen().ontimer(countdown, counter_interval) 
+pik
+
+wn.mainloop()
