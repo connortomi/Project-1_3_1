@@ -2,6 +2,7 @@
 import turtle as t
 import tkinter as tk
 import leaderboard as lb
+from playsound import _playsoundWin, playsound
 
 #assign variable values and set font for timer and score
 score = 0
@@ -45,7 +46,7 @@ player_name = input ("Please enter your name: ")
 wn.listen()
 
 #add pokemon as shapes 
-pokemon = ["bulbasaur.gif", "pikachu.gif", "charizard.gif", "squirtle.gif", "mew.gif", "gengar.gif", "gyrados.gif", "snorlax.gif", "eevee.gif"]
+pokemon = ["bulbasaur.gif", "pikachu.gif", "charizard.gif", "squirtle.gif", "mew.gif", "gengar.gif", "gyrados.gif", "snorlax.gif", "eevee.gif", "jigglypuff.gif"]
 for i in range(len(pokemon)):
 	wn.addshape(pokemon.pop())
 """
@@ -70,28 +71,32 @@ charizard.goto(30, 170)
 charizard.shape("charizard.gif")
 squirtle = t.Turtle()
 squirtle.penup()
-squirtle.goto(-60, 120)
+squirtle.goto(-60, 140)
 squirtle.shape("squirtle.gif")
 mew = t.Turtle()
 mew.penup()
-mew.goto(0, 120)
+mew.goto(0, 140)
 mew.shape("mew.gif")
 gengar = t.Turtle()
 gengar.penup()
-gengar.goto(60, 120)
+gengar.goto(60, 140)
 gengar.shape("gengar.gif")
 gyrados = t.Turtle()
 gyrados.penup()
-gyrados.goto(-90, 170)
+gyrados.goto(90, 170)
 gyrados.shape("gyrados.gif")
 snorlax = t.Turtle()
 snorlax.penup()
-snorlax.goto(-90, 170)
+snorlax.goto(-5, 210)
 snorlax.shape("snorlax.gif")
 eevee = t.Turtle()
 eevee.penup()
-eevee.goto(-90, 170)
+eevee.goto(35, 115)
 eevee.shape("eevee.gif")
+jigglypuff = t.Turtle()
+jigglypuff.penup()
+jigglypuff.goto(-30, 110)
+jigglypuff.shape("jigglypuff.gif")
 
 #initialize turtles (for score, timer, and game start), hide and set speed 
 score_drawer = t.Turtle()
@@ -131,12 +136,13 @@ def player_movement():
   wn.onkeypress(left, "a")
 
 def throw_pokeball():
+  playsound("throw_sound.mp3", False)
   thrown_pokeball.setposition(player.xcor(), player.ycor())
   thrown_pokeball.speed(0)
   thrown_pokeball.showturtle()
   thrown_pokeball.left(90)
   thrown_pokeball.speed(8)
-  thrown_pokeball.forward(300)
+  thrown_pokeball.forward(350)
   thrown_pokeball.speed(0)
   thrown_pokeball.right(90)
   thrown_pokeball.hideturtle()
@@ -157,7 +163,11 @@ def game_functions():
         player_movement()==True
         throw()==True
       else:
+        throw()==False
+        throw_pokeball()==False
+        player_movement()==False
         player.hideturtle()
+
 def countdown():
   global timer, timer_up
   timer_drawer.clear()
@@ -175,7 +185,7 @@ def manage_leaderboard():
   global leader_scores_list
   global leader_names_list
   global score
-  global johnathan
+  global player
 
   lb.load_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list)
 
@@ -202,7 +212,6 @@ def game_start(x,y):
     game_starter_button.clear()
     game_starter_button.hideturtle()
 
-wn.onkeypress(bulbasaur_hit, "o")
 game_starter_button.onclick(game_start)
 
 wn.mainloop()
