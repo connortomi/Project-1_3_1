@@ -96,8 +96,10 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   else:
     turtle_object.write("Sorry, you didn't make the ", font=("Arial", 10, "normal"))
     turtle_object.right(90)
+    turtle_object.penup()
     turtle_object.forward(20)
     turtle_object.left(90)
+    turtle_object.pendown()
     turtle_object.write("leaderboard. Maybe next time!", font=("Arial", 10, "normal"))
 
   # move turtle to a new line
@@ -107,8 +109,14 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   
   # TODO 10: Display a gold/silver/bronze message if player earned a gold/silver/or bronze medal; display nothing if no medal
   if (player_score >= bronze_score and player_score < silver_score):
+      turtle_object.penup()
+      turtle_object.goto(-120,int(turtle_object.ycor()))
       turtle_object.write("You earned a bronze medal!", font=font_setup)
   elif (player_score >= silver_score and player_score < gold_score):
+      turtle_object.penup()
+      turtle_object.goto(-120,int(turtle_object.ycor()))
       turtle_object.write("You earned a silver medal!", font=font_setup)
   elif (player_score >= gold_score):
+    turtle_object.penup()
+    turtle_object.goto(-120,int(turtle_object.ycor()))
     turtle_object.write("You earned a gold medal!", font=font_setup)

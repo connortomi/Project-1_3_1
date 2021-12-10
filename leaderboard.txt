@@ -1,5 +1,5 @@
-c,10
-g,2
-g,2
-m,1
-K,1
+Connor,27
+l,24
+Connor,22
+Connor,21
+Connor,18
